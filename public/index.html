@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-tasks"></i> Demo Task Manager</h1>
+            <p class="subtitle">A full-stack demo application with Node.js backend</p>
+            <div class="status-indicator">
+                <span id="connection-status" class="status-dot offline"></span>
+                <span id="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Add Task Form -->
+            <section class="add-task-section">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="new-task-input" 
+                        placeholder="Enter a new task..." 
+                        maxlength="100"
+                    >
+                    <button id="add-task-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+            </section>
+
+            <!-- Tasks Display -->
+            <section class="tasks-section">
+                <div class="tasks-header">
+                    <h2>Tasks</h2>
+                    <div class="task-stats">
+                        <span id="total-tasks">0</span> total, 
+                        <span id="completed-tasks">0</span> completed
+                    </div>
+                </div>
+                
+                <div id="loading" class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading tasks...
+                </div>
+                
+                <div id="error-message" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="error-text"></span>
+                    <button id="retry-btn" class="btn btn-small">Retry</button>
+                </div>
+
+                <ul id="tasks-list" class="tasks-list">
+                    <!-- Tasks will be dynamically added here -->
+                </ul>
+
+                <div id="no-tasks" class="no-tasks" style="display: none;">
+                    <i class="fas fa-clipboard-check"></i>
+                    <p>No tasks yet. Add one above to get started!</p>
+                </div>
+            </section>
+
+            <!-- API Demo Section -->
+            <section class="api-demo-section">
+                <details class="api-details">
+                    <summary>
+                        <i class="fas fa-code"></i> API Demo & Testing
+                    </summary>
+                    <div class="api-content">
+                        <p>This application connects to a REST API running on the backend. Try these endpoints:</p>
+                        <div class="api-endpoints">
+                            <button class="btn btn-outline" onclick="testAPI('/api/status')">
+                                <i class="fas fa-heartbeat"></i> Test API Status
+                            </button>
+                            <button class="btn btn-outline" onclick="testAPI('/api/tasks')">
+                                <i class="fas fa-list"></i> Get All Tasks
+                            </button>
+                        </div>
+                        <pre id="api-response" class="api-response"></pre>
+                    </div>
+                </details>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Demo by Viraj Pise | <a href="https://github.com/virajpise/demo" target="_blank">
+                <i class="fab fa-github"></i> GitHub Repository
+            </a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
